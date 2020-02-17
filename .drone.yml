@@ -1,0 +1,41 @@
+---
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: publish
+  # pull: if-not-exists
+  pull: always
+  image: banzaicloud/drone-kaniko
+  settings:
+    repo: kradalby/hugin
+    tags:
+      - ${DRONE_TAG}
+      - latest
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+trigger:
+    event:
+        - tag
+
+- name: notify
+  pull: if-not-exists
+  image: drillster/drone-email
+  settings:
+    from: drone@drone.fap.no
+    host: smtp.fap.no
+    port: 25
+    recipients:
+    - kradalby@kradalby.no
+    skip_verify: true
+  when:
+    status:
+    - success
+    - changed
+    - failure
