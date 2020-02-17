@@ -20,9 +20,10 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
+
 trigger:
-    event:
-        - tag
+  event:
+  - tag
 
 - name: notify
   pull: if-not-exists
