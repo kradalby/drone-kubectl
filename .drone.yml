@@ -21,10 +21,6 @@ steps:
     password:
       from_secret: docker_password
 
-trigger:
-  event:
-  - tag
-
 - name: notify
   pull: if-not-exists
   image: drillster/drone-email
@@ -40,3 +36,8 @@ trigger:
     - success
     - changed
     - failure
+
+trigger:
+  event:
+  - tag
+
