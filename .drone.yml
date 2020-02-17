@@ -7,12 +7,12 @@ platform:
   arch: amd64
 
 steps:
-- name: publish
+- name: build and publish 
   # pull: if-not-exists
   pull: always
   image: banzaicloud/drone-kaniko
   settings:
-    repo: kradalby/hugin
+    repo: kradalby/drone-kubectl
     tags:
       - ${DRONE_TAG}
       - latest
