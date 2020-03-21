@@ -12,10 +12,10 @@ trigger:
 
 steps:
   - name: build
-      pull: always
-      image: plugins/docker
-      environment:
-        DOCKER_BUILDKIT: 1
+    pull: always
+    image: plugins/docker
+    environment:
+      DOCKER_BUILDKIT: 1
     settings:
       repo: kradalby/drone-kubectl
       tags:
