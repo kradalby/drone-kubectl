@@ -6,6 +6,10 @@ name: default
 node_selector:
   drone: "true"
 
+trigger:
+  event:
+  - tag
+
 steps:
   - name: build
       pull: always
@@ -38,7 +42,3 @@ steps:
       - changed
       - failure
   
-  trigger:
-    event:
-    - tag
-
