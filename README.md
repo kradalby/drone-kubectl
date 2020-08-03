@@ -24,8 +24,8 @@ steps:
     commands:
       - kubectl create -f job_foo.yaml
       - kubectl wait --for=condition=complete -f job_foo.yaml
-
 ```
+
 ### Special thanks
 
 Inspired by [drone-kubernetes](https://github.com/honestbee/drone-kubernetes).
